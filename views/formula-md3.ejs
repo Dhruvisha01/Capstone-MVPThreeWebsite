@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/formula-md3.css">
+
+    <!-- From MD3 README -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+        {
+        "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+        }
+        }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+
+    <!-- Import Material Design Symbols (the new version of icons?) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    
+    <div class="header">
+        <div class="header-content">
+            <span class="material-symbols-outlined roadmap-icon">close</span>
+            <h1>Deriving Our Formula</h1>
+        </div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-content">
+            <span class="material-symbols-outlined toolbox-icon">calculate</span>
+            <span class="material-symbols-outlined roadmap-icon">conversion_path</span>
+            <svg class="progress-bar" xmlns="http://www.w3.org/2000/svg" height="10" fill="none">
+                <rect width="100%" height="10" rx="5" fill="#ACB2ED"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="instruction-content" id="fd-summary">
+        
+        <div id="fd-summary-intro">
+            <h2>Summary</h2>
+            <p>Let's do a quick review of how to find the formulas we'll use in the Figure of Merit of a Galvanometer Lab.</p>
+            <p>Using the half-deflection method, we take two measurements to find the figure of merit (k).</p>
+            <p>But, why can't we find k with just one measurement?</p>
+
+            <div class="button-container">
+                <md-outlined-button class="fd-next-button" data-key="next_fd_summary_init_deflection" >Next</md-outlined-button>
+            </div>
+        </div>   
+
+    </div>
+    
+    <!-- Import Javascript Code -->
+    <script src="javascript/formula-md3.js"></script>
+        
+</body>
+
+</html>
