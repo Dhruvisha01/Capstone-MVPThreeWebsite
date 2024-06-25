@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
     res.render("home")
 })
 
+app.get('/formula', (req, res) => {
+    res.render("formula")
+})
+
 
 //listen for request on port 3000, and as a callback function have the port listened on logged
 app.listen(port, hostname, () => {
