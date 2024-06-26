@@ -7,6 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/formula-md3.css">
 
+    <!-- Import Material Design Symbols (the new version of icons?) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+
     <!-- From MD3 README -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="importmap">
@@ -23,9 +27,11 @@
         document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
 
-    <!-- Import Material Design Symbols (the new version of icons?) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+    
 </head>
 
 <body>
@@ -54,6 +60,46 @@
             <p>Let's do a quick review of how to find the formulas we'll use in the Figure of Merit of a Galvanometer Lab.</p>
             <p>Using the half-deflection method, we take two measurements to find the figure of merit (k).</p>
             <p>But, why can't we find k with just one measurement?</p>
+
+            <div class="formula-container">
+                <svg class="formula-block" width="300" height="220">
+                    <!-- Arrow marker definition -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="6" markerHeight="4" 
+                                refX="0" refY="2" orient="auto">
+                          <polygon points="0 0, 4 2, 0 4" />
+                        </marker>
+                    </defs>
+            
+                    <!-- Text elements using MathJax -->
+                    <foreignObject x="20" y="20" width="60" height="20">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                            <span class="mathjax">\( I_1 = k\theta \)</span>
+                        </div>
+                    </foreignObject>
+                    <foreignObject x="200" y="20" width="60" height="30">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                            <span class="mathjax">\( I_1 = \frac{V}{R} \)</span>
+                        </div>
+                    </foreignObject>
+                    <foreignObject x="200" y="90" width="80" height="30">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                            <span class="mathjax">\( I_1 = \frac{E}{R + G} \)</span>
+                        </div>
+                    </foreignObject>
+                    <foreignObject x="120" y="170" width="90" height="30">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                            <span class="mathjax">\( k\theta = \frac{E}{R + G} \)</span>
+                        </div>
+                    </foreignObject>
+            
+                    <!-- Arrows -->
+                    <line x1="60" y1="60" x2="120" y2="150" class="arrow" />
+                    <line x1="240" y1="60" x2="240" y2="75" class="arrow" />
+                    <line x1="220" y1="130" x2="200" y2="150" class="arrow" />
+                </svg>
+            </div>
+            
 
             <div class="button-container">
                 <md-outlined-button class="fd-next-button" data-key="next_fd_summary_init_deflection" >Next</md-outlined-button>

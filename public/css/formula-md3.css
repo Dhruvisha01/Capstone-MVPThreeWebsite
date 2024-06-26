@@ -117,3 +117,20 @@ p {
     margin-left: 16px;
     width: calc(100% - 32px);
 }
+
+.arrow {
+    fill: none;
+    stroke: black;
+    stroke-width: 2;
+    marker-end: url(#arrowhead);
+}
+.text {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.formula-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

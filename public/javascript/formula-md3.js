@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+    MathJax.typeset();
+});
+
 document.addEventListener('DOMContentLoaded', (event) => {
     // Define the content for each button
     const contentMap = {
