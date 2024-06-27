@@ -7,6 +7,31 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', (event) => {
     // Define the content for each button
     const contentMap = {
+        next_fd_intro_toolbox: `
+            <p>The formula toolbox contains helpful formulas for you to use throughout the activity. Click on the formula toolbox icon in the upper left corner to view the formulas.</p> 
+            <div class="button-container">
+                <md-outlined-button class="fd-next-button" data-key="next_fd_intro_roadmap">Next</md-outlined-button>
+            </div>
+        `,
+        next_fd_intro_roadmap: `
+            <p>The roadmap gives an overview of the steps you have taken so far. Click on the roadmap icon in the upper left corner to review your steps throughout the activity.</p>
+            <div class="button-container">
+                <md-filled-button class="fd-next-section-button" data-key="next_section_fd_summary_intro">Next Section</md-filled-button>
+            </div>
+        `,
+        next_section_fd_summary_intro: `
+            <div id="fd-summary-intro">
+                <h2>Summary</h2>
+                <p>Let's do a quick review of how to find the formulas we'll use in the Figure of Merit of a Galvanometer Lab.</p>
+                <p>Using the half-deflection method, we take two measurements to find the figure of merit (k).</p>
+                <p>But, why can't we find k with just one measurement?</p>
+
+                <div class="button-container">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_summary_init_deflection" >Next</md-outlined-button>
+                </div>
+
+            </div>   
+        `,
         next_fd_summary_init_deflection: `
             <div id="fd-summary-init-deflection">
                 <h3>Initial Deflection</h3>
@@ -315,13 +340,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         `
     };
 
-    // Event delegation
+    // Next Button
     document.body.addEventListener('click', (event) => {
         if (event.target && event.target.classList.contains('fd-next-button')) {
             const button = event.target;
             const key = button.getAttribute('data-key');
             const newContent = contentMap[key];
             const parentContainer = button.parentElement.parentElement.parentElement;
+            console.log(parentContainer);
 
 
             if (newContent) {
@@ -337,6 +363,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                 MathJax.typeset();
 
+            }
+        }
+    });
+
+    // Next section Button
+    document.body.addEventListener('click', (event) => {
+        if (event.target && event.target.classList.contains('fd-next-section-button')) {
+            const button = event.target;
+            const key = button.getAttribute('data-key');
+            const newContent = contentMap[key];
+            const parentContainer = button.parentElement.parentElement.parentElement;
+
+            if (newContent) {
+                parentContainer.innerHTML = '';
+                
+                const textContainer = document.createElement('div');
+                textContainer.innerHTML = newContent;
+
+                parentContainer.appendChild(textContainer);
+
+                // Remove the button container div
+                button.parentElement.remove();
+
+                MathJax.typeset();
+
+            } else {
+                console.log(`Error: No new content mapping found for button ${key}`)
             }
         }
     });
