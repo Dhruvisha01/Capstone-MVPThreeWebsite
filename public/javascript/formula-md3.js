@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function() {
     MathJax.typeset();
 });
@@ -16,9 +14,75 @@ document.addEventListener('DOMContentLoaded', (event) => {
         next_fd_intro_roadmap: `
             <p>The roadmap gives an overview of the steps you have taken so far. Click on the roadmap icon in the upper left corner to review your steps throughout the activity.</p>
             <div class="button-container">
-                <md-filled-button class="fd-next-section-button" data-key="next_section_fd_summary_intro">Next Section</md-filled-button>
+                <md-filled-button class="fd-next-section-button" data-key="next_section_fd_goal">Next Section</md-filled-button>
             </div>
         `,
+        next_section_fd_goal: `
+            <div id="fd-goal">
+                <h2>INSERT TITLE</h2>
+                <p>Our goal is to find the <b>figure of merit</b> of the galvanometer, indicated by the variable <b>k</b>. </p>
+                <p>If we want to find <b>k</b>, which formula should we start with?</p>
+                
+                <div class="mc-question">
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdq1c1">
+                            <span>Ohm's Law: </span> \\( V = IR \\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdq1c2">
+                            <span>Figure of Merit: </span> \\( I = k \\theta \\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdq1c3">
+                            <span>Series Resistance: </span> \\( R_T = R_1 + R_2 \\)
+                        </md-outlined-button>
+                    </div>
+
+                    <div class="feedback"></div>
+                </div>
+                
+                <div class="button-container hidden-button">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_current">Next</md-outlined-button>
+                </div>
+
+            </div>
+        `,
+        next_fd_goal_current: `
+            <div id="fd-goal-current">
+                <p>The <b>I = kθ</b> equation indicates that we can find the figure of merit (k) by using the current (I) and the deflection (θ). </p>
+                <p>What values do we know now?</p>
+                
+                <div class="mc-question">
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdq1c1">
+                            <span>Both </span> \\(I\\) <span> and </span> \\(\\theta\\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdq1c2">
+                            <span>Only </span> \\(I\\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdq1c3">
+                            <span>Only </span> \\(\\theta\\)
+                        </md-outlined-button>
+                    </div>
+
+                    
+                    <div class="feedback"></div>
+
+                   
+                </div>
+
+                <div class="button-container hidden-button">
+                    <md-filled-button class="fd-next-section-button" data-key="next_section_fd_summary_intro">Next Section</md-filled-button>
+                </div>
+
+            </div>
+        `,    
         next_section_fd_summary_intro: `
             <div id="fd-summary-intro">
                 <h2>Summary</h2>
@@ -354,12 +418,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 const textContainer = document.createElement('div');
                 textContainer.innerHTML = newContent;
 
-
-
                 parentContainer.appendChild(textContainer);
 
                 // Remove the button container div
                 button.parentElement.remove();
+
+                // Scroll the first element in textContainer into view
+                textContainer.style.scrollMarginTop =  '150px';
+                textContainer.scrollIntoView({ behavior: 'smooth' });
 
                 MathJax.typeset();
 
@@ -373,15 +439,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const button = event.target;
             const key = button.getAttribute('data-key');
             const newContent = contentMap[key];
-            const parentContainer = button.parentElement.parentElement.parentElement;
+            // const parentContainer = button.parentElement.parentElement.parentElement;
 
             if (newContent) {
-                parentContainer.innerHTML = '';
+                // parentContainer.innerHTML = '';
+                const instructionContainer = document.querySelector('.instruction-content');
+                instructionContainer.innerHTML = '';
                 
                 const textContainer = document.createElement('div');
                 textContainer.innerHTML = newContent;
 
-                parentContainer.appendChild(textContainer);
+                instructionContainer.appendChild(textContainer);
 
                 // Remove the button container div
                 button.parentElement.remove();
@@ -393,5 +461,74 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         }
     });
+
+    const answerKey = {
+        "fdq1c1": ["correct", "Well done! That's the correct answer."],
+        "fdq1c2": ["incorrect", "Oops! That's not correct."],
+        "fdq1c3": ["incorrect", "Oops! That's not correct."],
+        "fdq2c1": ["correct", "Well done! That's the correct answer."],
+        "fdq2c2": ["incorrect", "Oops! That's not correct."],
+        "fdq2c3": ["incorrect", "Oops! That's not correct."],
+        // Add more choices as needed
+    };
+    
+    document.body.addEventListener('click', (event) => {
+        if (event.target && event.target.classList.contains('mc-button')) {
+            const button = event.target;
+            const choiceID = button.getAttribute('data-key');
+            const wrapperDiv = button.parentElement;
+            const questionDiv = wrapperDiv.parentElement;
+
+            if (choiceID in answerKey) {
+                
+                const [correctFlag, feedbackText] = answerKey[choiceID];
+                const feedbackDiv = questionDiv.querySelector('.feedback');
+                const nextButton = questionDiv.parentElement.querySelector('.button-container');
+
+                // Reset buttons in the same parent div
+                const siblingButtons = questionDiv.querySelectorAll('.mc-button');
+                siblingButtons.forEach(sib => {
+                    sib.style.setProperty('--_focus-label-text-color', '');
+                    sib.style.setProperty('--_outline-color', '');
+                    sib.style.backgroundColor = '';
+                    const icon = sib.parentElement.querySelector('.status-icon');
+                    if (icon) icon.remove();
+                });
+
+                let icon;
+                if (correctFlag === 'correct') {
+                    button.style.setProperty('--_focus-label-text-color', '#319036');
+                    button.style.setProperty('--_outline-color', '#319036');
+                    button.style.backgroundColor = '#E9FAEA';
+                    icon = document.createElement('span');
+                    icon.className = 'status-icon check-icon';
+                    icon.innerHTML = '<span class="material-symbols-outlined">check</span>';
+                } else {
+                    button.style.setProperty('--_focus-label-text-color', '#C92525');
+                    button.style.setProperty('--_outline-color', '#C92525');
+                    button.style.backgroundColor = '#FFEFEF';
+                    icon = document.createElement('span');
+                    icon.className = 'status-icon x-icon';
+                    icon.innerHTML = '<span class="material-symbols-outlined">close</span>';
+                }
+
+                wrapperDiv.insertBefore(icon, button);
+
+
+                // Display the feedback block and update the text
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.textContent = feedbackText;
+
+                // Display the next button and scroll to it
+                nextButton.classList.remove("hidden-button"); 
+                nextButton.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            } else {
+                console.error(`No answer key found for choiceID ${choiceID}`);
+            }
+        }
+    });
+
 });
+
+
 

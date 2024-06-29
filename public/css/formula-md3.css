@@ -146,12 +146,35 @@ li {
     letter-spacing: 0.4px;
 }
 
+
+.diagram-container {
+    overflow-x: auto;
+}
+
+.feedback {
+    background-color: #6874E8; /* Purple background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 10px; /* Space above the feedback box */
+    margin-bottom: 10px;
+    display: none;
+}
+
+.button-container {
+    margin-bottom: 15px;
+}
+
+.hidden-button {
+    display: none;
+}
+
 .mc-button {
     width: 100%;
     height: 45px;
 
-    margin-top: 5px;
-    margin-bottom: 5px;
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
 
     --md-outlined-button-container-shape: 10px;
 
@@ -160,4 +183,47 @@ li {
     
     --md-outlined-button-label-text-weight: 400;
 
+}
+
+.mc-button-wrapper {
+    width: 100%;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    position: relative;
+    display: inline-block;
+}
+
+.button-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 5px; /* Add some padding around the button if needed */
+}
+
+.status-icon {
+    position: absolute;
+    top: -7px; /* Adjust as needed */
+    left: -7px; /* Adjust as needed */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #C92525;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size:8px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.check-icon {
+    background-color: #319036;
+}
+
+.status-icon .material-symbols-outlined {
+    font-size: 16px; /* Adjust the size of the icon */
+    line-height: 16px; /* Ensure the icon is vertically centered */
+    font-weight: bold;
 }
