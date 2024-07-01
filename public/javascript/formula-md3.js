@@ -25,17 +25,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 
                 <div class="mc-question">
                     <div class="mc-button-wrapper">
-                        <md-outlined-button class="mc-button" data-key="fdq1c1">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq1c1">
                             <span>Ohm's Law: </span> \\( V = IR \\)
                         </md-outlined-button>
                     </div>
                     <div class="mc-button-wrapper">
-                        <md-outlined-button class="mc-button" data-key="fdq1c2">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq1c2">
                             <span>Figure of Merit: </span> \\( I = k \\theta \\)
                         </md-outlined-button>
                     </div>
                     <div class="mc-button-wrapper">
-                        <md-outlined-button class="mc-button" data-key="fdq1c3">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq1c3">
                             <span>Series Resistance: </span> \\( R_T = R_1 + R_2 \\)
                         </md-outlined-button>
                     </div>
@@ -51,38 +51,296 @@ document.addEventListener('DOMContentLoaded', (event) => {
         `,
         next_fd_goal_current: `
             <div id="fd-goal-current">
-                <p>The <b>I = kθ</b> equation indicates that we can find the figure of merit (k) by using the current (I) and the deflection (θ). </p>
+                <p>The <b>\\(I = k\\theta\\)</b> equation indicates that we can find the figure of merit (\\(k\\)) by using the current (\\(I\\)) and the deflection (\\(\\theta\\)). </p>
                 <p>What values do we know now?</p>
                 
                 <div class="mc-question">
                     <div class="mc-button-wrapper">
-                        <md-outlined-button class="mc-button" data-key="fdq1c1">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq2c1">
                             <span>Both </span> \\(I\\) <span> and </span> \\(\\theta\\)
                         </md-outlined-button>
                     </div>
                     <div class="mc-button-wrapper">
-                        <md-outlined-button class="mc-button" data-key="fdq1c2">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq2c2">
                             <span>Only </span> \\(I\\)
                         </md-outlined-button>
                     </div>
                     <div class="mc-button-wrapper">
-                        <md-outlined-button class="mc-button" data-key="fdq1c3">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq2c3">
                             <span>Only </span> \\(\\theta\\)
                         </md-outlined-button>
                     </div>
 
-                    
                     <div class="feedback"></div>
 
-                   
                 </div>
 
                 <div class="button-container hidden-button">
-                    <md-filled-button class="fd-next-section-button" data-key="next_section_fd_summary_intro">Next Section</md-filled-button>
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_findk">Next</md-outlined-button>
                 </div>
 
             </div>
-        `,    
+        `,
+         next_fd_goal_findk: `
+            <div id="fd_goal_find_k">
+                <p>Since we don't know the <b>current (\\(I\\))</b>, we can't yet find the <b>figure of merit (\\(k\\))</b>.</p>
+
+                <div class="diagram-container">
+                    <svg class="formula-block" width="120" height="150">
+                        <!-- Arrow marker definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
+                                <polygon points="0 0, 4 2, 0 4" />
+                            </marker>
+                            
+                        </defs>
+
+                        <text x="20" y="20" font-family="Roboto" font-size="16" fill="#3E49B8">Unknown</text>
+                        <text x="58" y="140" font-family="Roboto" font-size="16" fill="#787878">Known</text>
+                        
+                        <foreignObject x="32" y="65" width="60" height="25">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span class="mathjax">\\( I = k\\theta\\)</span>
+                            </div>
+                        </foreignObject>
+                
+                        <!-- Arrows -->
+                        <line x1="40" y1="60" x2="40" y2="35" class="arrow" />
+                        <line x1="72" y1="60" x2="72" y2="35" class="arrow" />
+                        <line x1="82" y1="90" x2="82" y2="115" class="arrow" />
+                    </svg>
+                </div>
+            
+                <div class="button-container">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_current_ohms_law">Next</md-outlined-button>
+                </div>
+
+            </div> 
+         `,
+         next_fd_goal_current_ohms_law: `
+            <div id="fd-goal-current-ohms-law">
+                <p>If we don't know the current (\\(I\\)), maybe we can use another equation to solve for it. </p>
+                <p>Which of these equations should we use to find more information about the current (\\(I\\))?</p>
+                
+                <div class="mc-question">
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq3c1">
+                            <span>Ohm's Law: </span> \\( V = IR \\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq3c2">
+                            <span>Parallel Resistance: </span> \\( \\frac{1}{R} = \\frac{1}{R_1} + \\frac{1}{R_2}\\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq3c3">
+                            <span>Series Resistance: </span> \\( R_T = R_1 + R_2 \\)
+                        </md-outlined-button>
+                    </div>
+
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="button-container hidden-button">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_voltage">Next</md-outlined-button>
+                </div>
+
+            </div>
+         `,
+         next_fd_goal_voltage: `
+            <div id="fd-goal-voltage">
+                <p>To solve the <b>current (\\(I\\))</b> using Ohm's Law, let's check if we know the <b>voltage (\\(V\\))</b> and the <b>resistance (\\(R\\))</b>.</p>
+                
+                <h3>Voltage</h3>
+                <p>The voltage in the circuit is the <b>emf of the battery, \\(E\\)</b>. You can find the emf value written on the battery itself, and it is usually <b>2V</b> for this lab.</p>
+                <p>Let's update our formula with the known value:</p>
+
+                <div class="diagram-container">
+                    <svg class="formula-block" width="250" height="80">
+                        <!-- Arrow marker definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
+                                <polygon points="0 0, 4 2, 0 4" />
+                            </marker>
+                            
+                        </defs>
+                        
+                        <foreignObject x="10" y="30" width="100" height="25">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span class="mathjax">\\( V = IR \\)</span>
+                            </div>
+                        </foreignObject>
+
+                        <foreignObject x="138" y="30" width="100" height="25">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span class="mathjax">\\( E = IR \\)</span>
+                            </div>
+                        </foreignObject>
+                
+                        <!-- Arrows -->
+                        <line x1="85" y1="40" x2="127" y2="40" class="arrow" />
+
+                    </svg>
+                </div>
+
+                <div class="button-container">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_resistance">Next</md-outlined-button>
+                </div>
+
+            </div> 
+         `,
+        next_fd_goal_resistance: `
+            <div id="fd-goal-resistance">
+                <h3>Resistance</h3>
+                <p>To get the initial deflection, we close key \\(K_1\\). Let's look at the resistance in the circuit when key \\(K_1\\) is closed.</p>
+
+                <div class="diagram-container">
+                    <svg width="247" height="125" viewBox="0 0 247 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="221" y1="23.25" x2="221" y2="43" stroke="black" stroke-width="1.5"/>
+                        <line x1="221" y1="63" x2="221" y2="103" stroke="black" stroke-width="1.5"/>
+                        <line x1="221" y1="102.25" x2="99" y2="102.25" stroke="black" stroke-width="1.5"/>
+                        <line x1="90" y1="102.25" x2="26" y2="102.25" stroke="black" stroke-width="1.5"/>
+                        <line x1="26" y1="60" x2="26" y2="103" stroke="black" stroke-width="1.5"/>
+                        <line x1="26" y1="23.25" x2="26" y2="43" stroke="black" stroke-width="1.5"/>
+                        <line x1="131" y1="24" x2="26" y2="24" stroke="black" stroke-width="1.5"/>
+                        <line x1="221" y1="24" x2="148" y2="24" stroke="black" stroke-width="1.5"/>
+                        
+                
+                        <svg x="14" y="43" width="25" height="17" viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="11" font-family="Roboto" font-size="50%" fill="black">R</text>
+                            <rect x="1" y="1" width="23" height="15" stroke="black" stroke-width="1.5"/>
+                        </svg>
+                
+                        <svg x="131" y="15" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="6.5" y="12" font-family="Roboto" font-size="50%" fill="black">G</text>
+                            <circle cx="9" cy="9" r="7.5" stroke="black" stroke-width="1.5"/>
+                        </svg>
+                
+                        <svg x="215" y="34" width="18" height="28" viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="8" font-family="Roboto" font-size="50%" fill="black">K</text>
+                            <text x="15" y="9" font-family="Roboto" font-size="25%" fill="black">1</text>
+                            <path d="M 3 12 C 3 12 0.8 16 1 19.5 C 1 22.5 3 26.5 3 26.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 9 12 C 9 12 11.8 16 11.5 19.5 C 11.5 22.5 9 26.5 9 26.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="6" cy="19.5" r="2.5" fill="black"/>
+                        </svg>
+                
+                        <svg x="82" y="77" width="23" height="35" viewBox="0 0 23 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="9" y1="17" x2="9" y2="34" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="16" y1="21.5" x2="16" y2="30" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                            <text x="10" y="8" font-family="Roboto" font-size="50%" fill="black">E</text>
+                            <line x1="19" y1="18" x2="22" y2="18" stroke="black" stroke-width="1"/>
+                            <line x1="1" y1="18" x2="5" y2="18" stroke="black" stroke-width="1"/>
+                            <line x1="3" y1="16" x2="3" y2="20" stroke="black" stroke-width="1"/>
+                        </svg>
+                    
+                    </svg>
+                </div>
+
+                <p>Which elements add resistance to the circuit?</p>
+
+                <div class="mc-question">
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq3c1">
+                            <span>High Resistance Box</span>
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq3c2">
+                            <span>Galvanometer</span>
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq3c3">
+                            <span>Key</span> \\(K_1\\)
+                        </md-outlined-button>
+                    </div>
+
+                    <div class="feedback"></div>
+                </div>
+            
+                <div class="button-container">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_resistance_equation">Next</md-outlined-button>
+                </div>
+
+            </div> 
+        `,
+        next_fd_goal_resistance_equation: `
+            <div id="fd-goal-series-resistance">
+                <p>Since the <b>high resistance box</b> and <b>galvanometer</b> are connected in series, we can use the <b>series resistance formula</b>.</p>
+
+                <div class="diagram-container">
+                    <span>\\(R_T = R_1 + R_2\\)</span>
+                </div>
+
+                <p>So, what's the resistance in the circuit?.</p>
+
+                <div class="mc-question">
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq5c1">
+                            \\(\\frac{1}{R} + \\frac{1}{G}\\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq5c2">
+                            \\(R + G\\)
+                        </md-outlined-button>
+                    </div>
+                    <div class="mc-button-wrapper">
+                        <md-outlined-button class="mc-button" data-key="fdgoalq5c3">
+                            \\(R + \\frac{1}{G}\\)
+                        </md-outlined-button>
+                    </div>
+
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="button-container hidden-button">
+                    <md-outlined-button class="fd-next-button" data-key="next_fd_goal_update_formula">Next</md-outlined-button>
+                </div>
+        
+
+            </div>  
+        `,
+        next_fd_goal_update_formula: `
+            <div id="fd-goal-update-formula">
+                <p>Let's update our formula with the resistance:</p>
+
+                <div class="diagram-container">
+                    <svg class="formula-block" width="260" height="80">
+                        <!-- Arrow marker definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
+                                <polygon points="0 0, 4 2, 0 4" />
+                            </marker>
+                            
+                        </defs>
+                        
+                        <foreignObject x="10" y="30" width="100" height="25">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span class="mathjax">\\( E = IR \\)</span>
+                            </div>
+                        </foreignObject>
+
+                        <foreignObject x="135" y="30" width="140" height="25">
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                <span class="mathjax">\\( E = I(R+G) \\)</span>
+                            </div>
+                        </foreignObject>
+                
+                        <!-- Arrows -->
+                        <line x1="85" y1="40" x2="125" y2="40" class="arrow" />
+
+                    </svg>
+                </div>
+                
+
+                <div class="button-container">
+                    <md-filled-button class="fd-next-section-button" data-key="next_section_fd_summary_intro" >Next Section</md-filled-button>
+                </div>
+
+            </div>   
+        `,
         next_section_fd_summary_intro: `
             <div id="fd-summary-intro">
                 <h2>Summary</h2>
@@ -410,15 +668,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const button = event.target;
             const key = button.getAttribute('data-key');
             const newContent = contentMap[key];
-            const parentContainer = button.parentElement.parentElement.parentElement;
-            console.log(parentContainer);
-
+            const instructionContainer = document.querySelector('.instruction-content');
+            
 
             if (newContent) {
                 const textContainer = document.createElement('div');
-                textContainer.innerHTML = newContent;
+                textContainer.innerHTML = newContent;                
 
-                parentContainer.appendChild(textContainer);
+                instructionContainer.appendChild(textContainer);
 
                 // Remove the button container div
                 button.parentElement.remove();
@@ -463,12 +720,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     const answerKey = {
-        "fdq1c1": ["correct", "Well done! That's the correct answer."],
-        "fdq1c2": ["incorrect", "Oops! That's not correct."],
-        "fdq1c3": ["incorrect", "Oops! That's not correct."],
-        "fdq2c1": ["correct", "Well done! That's the correct answer."],
-        "fdq2c2": ["incorrect", "Oops! That's not correct."],
-        "fdq2c3": ["incorrect", "Oops! That's not correct."],
+        "fdgoalq1c1": ["incorrect", "tbd"],
+        "fdgoalq1c2": ["correct", "tbd"],
+        "fdgoalq1c3": ["incorrect", "tbd"],
+        "fdgoalq2c1": ["incorrect", `Not quite. We can get the <b>deflection (θ)</b> from the galvanometer reading, but we don't know the <b>current (I)</b>.`],
+        "fdgoalq2c2": ["incorrect", `Not quite. We can get the <b>deflection (θ)</b> from the galvanometer reading, but we don't know the <b>current (I)</b>.`],
+        "fdgoalq2c3": ["correct", `Correct. We can get the <b>deflection (θ)</b> from the galvanometer reading, but we don't know the <b>current (I)</b>.`],
+        "fdgoalq3c1": ["correct", "tbd"],
+        "fdgoalq3c2": ["incorrect", "tbd"],
+        "fdgoalq3c3": ["incorrect", "tbd"],
+        "fdgoalq5c1": ["incorrect", "tbd"],
+        "fdgoalq5c2": ["correct", "tbd"],
+        "fdgoalq5c3": ["incorrect", "tbd"],
         // Add more choices as needed
     };
     
@@ -517,7 +780,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                 // Display the feedback block and update the text
                 feedbackDiv.style.display = 'block';
-                feedbackDiv.textContent = feedbackText;
+                feedbackDiv.innerHTML = `<b>Feedback:</b> ${feedbackText}`;
 
                 // Display the next button and scroll to it
                 nextButton.classList.remove("hidden-button"); 
